@@ -1,0 +1,14 @@
+ <div *ngIf="user" >
+  {{user.email}}
+  <button type="button" (click)="delete(user)" >Delete</button>
+  <button type="button" (click)="update(user)" >Update</button>
+   <div [hidden]="!editBt" >
+   <form #userForm = "ngForm" >
+    <label> email</label>
+     <input type="text" name="email" [(ngModel)] = 'user.email' >
+   <button type="submit" (click)="update(user)" > Update </button>
+   </form>
+ </div>
+ </div>
+
+

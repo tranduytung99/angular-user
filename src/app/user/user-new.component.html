@@ -1,0 +1,20 @@
+<div class= "row" >
+<form (ngSubmit)="createUser(user)" #userForm = 'ngForm' >
+<div>
+  <h4>Email</h4>
+  <input type="text" required="" name="email" #email ='ngModel'
+    [(ngModel)] = 'user.email'
+  >
+  <div [hidden] = "email.valid || email.pristine " > email is not blank </div>
+</div>
+
+<div>
+  <h4>Password</h4>
+  <input type="password" required="" name="password" #password ='ngModel'
+    [(ngModel)] = 'user.password'
+  >
+  <div [hidden] = "password.valid || password.pristine " > password is not blank </div>
+</div>
+ <button type="submit" [disabled]="!userForm.form.valid" > Submit </button>
+</form>
+</div>
