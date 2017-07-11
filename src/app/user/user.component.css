@@ -1,0 +1,17 @@
+.user{
+margin: 10px;
+padding: 5px;
+border: 1px solid gray ;
+border-radius: 5px;
+height: 100px;
+background: white;
+text-align: center;
+ box-shadow: 1px 1px;
+-webkit-transition: background 2s; /* Safari */
+ transition: background 2s;
+}
+
+.user:hover{
+  background: #ec8888;
+  box-shadow: 3px 3px;
+}

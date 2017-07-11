@@ -1,14 +1,18 @@
  <div *ngIf="user" >
-  {{user.email}}
-  <button type="button" (click)="delete(user)" >Delete</button>
-  <button type="button" (click)="update(user)" >Update</button>
+ <p> Email: {{user.email}} </p>
+ <p> Create at: {{user.created_at}} </p>
+ <p> Update at: {{user.updated_at}} </p>
+  <button type="button" class="btn btn-primary" (click)="delete(user)" >Delete</button>
+  <button type="button" class="btn btn-primary" (click)="update(user)" >Update</button>
+
    <div [hidden]="!editBt" >
+
    <form #userForm = "ngForm" >
     <label> email</label>
      <input type="text" name="email" [(ngModel)] = 'user.email' >
    <button type="submit" (click)="update(user)" > Update </button>
    </form>
- </div>
- </div>
 
+ </div>
+ </div>
 

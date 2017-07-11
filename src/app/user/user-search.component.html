@@ -1,0 +1,14 @@
+<div id="search-component">
+  <h4>Hero Search</h4>
+     <div class="form-group">
+  <input #searchBox class="form-control" id="search-box" (keyup)="search_user(searchBox.value)" />
+ </div>
+  <div>
+  <div class = "search" [hidden]="check" >
+    <div *ngFor="let user of users"
+        class="search-result" >
+      <a routerLink = "/user/{{user.id}}" > {{user.email}} </a>
+    </div>
+   </div>
+  </div>
+</div>

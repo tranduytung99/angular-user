@@ -3,6 +3,7 @@ import {Http, Response, Headers, RequestOptions} from '@angular/http';
 import { Observable } from 'rxjs/Observable' ;
 import 'rxjs/add/operator/map';
 import { User } from './user';
+import {Home} from '../home/home';
 
 @Injectable()
 export class UserService{
@@ -19,18 +20,19 @@ export class UserService{
 
   getUsers(): Observable<User[]>{
      return this.http.get(this.userUrl)
-       .map((response: Response) => <User[]>response.json() )
+       .map((response: Response) => response.json() )
   }
 
-  getUser(id: number){
-    return this.http.get("http://localhost:3000/api/v1/detail/"+id);
+
+  getUser(id: number): Observable<User>{
+    return this.http.get("http://localhost:3000/api/v1/detail/"+id).map(
+     (res: Response) => res.json() ).catch(this.handleError);
   }
 
-  createUser(user: User): Observable<User>{
-    // let headers = new Headers({'Content-Type':'application/json'});
-    // let options = new RequestOptions({headers: headers});
 
-    return this.http.post("http://localhost:3000/api/v1/user/create", JSON.stringify(user),this.options).map(
+  createUser(user: User, home: Home): Observable<User>{
+    return this.http.post("http://localhost:3000/api/v1/user/create", {email: user.email, password: user.password,
+     home_name: home.name },this.options).map(
      (res: Response) => res.json() );
   }
 

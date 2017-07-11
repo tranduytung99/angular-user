@@ -11,17 +11,22 @@ import {UserService} from './user.service';
 })
 export class UserComponent implements OnInit {
   users: User[];
+  p: number = 1;
 
   constructor(private userService: UserService) {
   }
 
   ngOnInit() {
-   let timer = Observable.timer(0, 5000);
-   timer.subscribe( () => this.getUsers() );
+   // let timer = Observable.timer(0, 5000);
+   // timer.subscribe( () => this.getUsers() );
+
+   let users = this.userService.getUsers().subscribe(userss => this.users = userss);
+   //users.subscribe(userss => this.users = userss);
   }
 
-  getUsers() {
-    this.userService.getUsers()
-      .subscribe(userss => this.users = userss);
-  }
+  // getUsers() {
+  //   this.userService.getUsers()
+  //     .subscribe(userss => this.users = userss);
+  // }
+
 }

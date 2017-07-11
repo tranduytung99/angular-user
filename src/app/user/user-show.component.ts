@@ -15,26 +15,24 @@ export class UserShowComponent implements OnInit{
  userId: any;
  errorMessage: any ;
  editBt: boolean = false;
+ deleteAlert: boolean = false;
  user: User;
  returnUrl: string;
 
  constructor(
-
    private route: ActivatedRoute,
    private userService: UserService,
    private router: Router
-
    ){
 
  }
 
  ngOnInit(){
- // this.userId = this.route.params.subscribe( params => {this.id = +params['id'] } );
    this.returnUrl = "/list";
    let userRequest = this.route.params.flatMap( (params: Params)=>
       this.userService.getUser(+params['id'])
     );
-   userRequest.subscribe( user => this.user = user.json() );
+   userRequest.subscribe( user => this.user = user );
  }
 
   update(user: User){
@@ -45,6 +43,7 @@ export class UserShowComponent implements OnInit{
   }
 
   delete(user: User){
+    this.deleteAlert = true;
     this.userService.deleteUser(this.user.id).subscribe(
       data =>{this.router.navigate([this.returnUrl])}
       , error => this.errorMessage || error );
