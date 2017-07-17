@@ -17,16 +17,16 @@ export class UserComponent implements OnInit {
   }
 
   ngOnInit() {
-   // let timer = Observable.timer(0, 5000);
-   // timer.subscribe( () => this.getUsers() );
+    let timer = Observable.timer(0, 5000);
+    timer.subscribe( () => this.getUsers() );
 
-   let users = this.userService.getUsers().subscribe(userss => this.users = userss);
+ //  let users = this.userService.getUsers().subscribe(userss => this.users = userss);
    //users.subscribe(userss => this.users = userss);
   }
 
-  // getUsers() {
-  //   this.userService.getUsers()
-  //     .subscribe(userss => this.users = userss);
-  // }
+  getUsers() {
+    this.userService.getUsers()
+      .subscribe(userss => this.users = userss);
+  }
 
 }

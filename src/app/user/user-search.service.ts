@@ -18,7 +18,7 @@ export class UserSearchService {
     term != "" ? term : term = null;
 
     return this.http
-      .get("http://localhost:3000/api/v1/search/"+term)
+      .get("http://localhost:3000/api/v1/search/"+term+"?access_token="+localStorage.getItem('token'))
       .map((response: Response) => <User[]>response.json() ).catch(this.handleError);
   }
 

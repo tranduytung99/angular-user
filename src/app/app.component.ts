@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LocalStorageModule } from 'angular-2-local-storage';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  checklogin: boolean = false;
+  constructor(){
+    localStorage.getItem('token') ? this.checklogin = true : this.checklogin = false;
+  }
 }
