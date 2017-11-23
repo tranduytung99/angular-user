@@ -13,6 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { UserShowComponent } from './user/user-show.component';
 import { UserNewComponent } from './user/user-new.component';
 import { UserSearchComponent } from './user/user-search.component';
+import { LoginComponent } from './user/login.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { UserSearchComponent } from './user/user-search.component';
     HomeComponent,
     UserShowComponent,
     UserNewComponent,
-    UserSearchComponent
+    UserSearchComponent,
+    LoginComponent
   ],
   imports: [
     FormsModule,
@@ -32,6 +34,7 @@ import { UserSearchComponent } from './user/user-search.component';
       { path: 'list', component: UserComponent },
       { path: 'user/:id', component: UserShowComponent },
       {path: 'new', component: UserNewComponent},
+       {path: 'login', component: LoginComponent},
       {path: '', redirectTo:"", pathMatch:"full"}
       ])
   ],
